@@ -1,0 +1,29 @@
+{
+    "name": "chromatic/orange-dam-php",
+    "description": "Orange Dam PHP API client",
+    "keywords": [ "orange-logic", "orange-dam", "dam", "api" ],
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/ChromaticHQ/orange-dam-php",
+    "authors": [
+        {
+            "name": "Chromatic",
+            "homepage": "https://chromatichq.com/"
+        },
+        {
+            "name": "Sergey Korzh",
+            "email": "sergey@chromatichq.com",
+            "homepage": "https://www.drupal.org/u/skorzh"
+        },
+        {
+            "name": "Adam Zimmermann",
+            "email": "adam@chromatichq.com",
+            "homepage": "https://www.drupal.org/u/adamzimmermann"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "minimum-stability": "stable"
+}
