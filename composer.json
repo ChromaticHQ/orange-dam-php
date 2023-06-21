@@ -23,7 +23,7 @@
     "require": {
         "php": ">=7.3",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^7.3"
+        "guzzlehttp/guzzle": "^6 || ^7"
     },
     "minimum-stability": "stable"
 }
