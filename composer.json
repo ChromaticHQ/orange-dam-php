@@ -30,5 +30,20 @@
             "Chromatic\\OrangeDam\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "phpcs": "vendor/bin/phpcs -p .",
+        "phpcbf": "vendor/bin/phpcbf -p .",
+        "test": [
+            "@phpcs"
+        ]
+    }
 }

@@ -1,0 +1,7 @@
+<ruleset name="orange-dam-php">
+  <description>PHP CodeSniffer configuration for orange-dam-php.</description>
+  <file>.</file>
+  <rule ref="PSR12"/>
+  <!-- Exclude the Composer Vendor directory. -->
+  <exclude-pattern>/vendor/*</exclude-pattern>
+</ruleset>

@@ -2,4 +2,6 @@
 
 namespace Chromatic\OrangeDam\Exceptions;
 
-class BadRequestException extends OrangeDamException { }
+class BadRequestException extends OrangeDamException
+{
+}
