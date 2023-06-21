@@ -25,5 +25,10 @@
         "ext-json": "*",
         "guzzlehttp/guzzle": "^6 || ^7"
     },
+    "autoload": {
+        "psr-4": {
+            "Chromatic\\OrangeDam\\": "src/"
+        }
+    },
     "minimum-stability": "stable"
 }
