@@ -1,0 +1,50 @@
+---
+name: Tests and Code Analysis
+on:  # yamllint disable-line rule:truthy
+  # Trigger the workflow on pushes to the main branch and all pull requests.
+  push:
+    branches:
+      - "**.x"
+  pull_request:
+
+jobs:
+  php-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        php: [7.3, 7.4, 8.0, 8.1, 8.2]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.25.4
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install Composer dependencies
+        uses: "ramsey/composer-install@v2"
+
+      - name: PHP coding standards
+        run: composer phpcs
+
+      - name: PHP static analysis
+        run: composer phpstan
+
+      - name: PHP rector
+        run: composer rector
+
+  yaml-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: YAML lint
+        uses: ibiqlik/action-yamllint@v3.1
+        with:
+          config_file: .yamllint.yml
