@@ -67,7 +67,7 @@ class Response implements ResponseInterface
      */
     public function toArray()
     {
-        return json_decode(json_encode($this->data), true);
+        return json_decode(json_encode($this->data, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -80,7 +80,7 @@ class Response implements ResponseInterface
     {
         $contents = $response->getBody()->getContents();
 
-        return $contents ? json_decode($contents) : null;
+        return $contents ? json_decode($contents, null, 512, JSON_THROW_ON_ERROR) : null;
     }
 
     /**

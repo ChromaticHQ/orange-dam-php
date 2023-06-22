@@ -26,6 +26,7 @@ class OAuth2 extends Endpoint
      */
     public function getTokensByCode(string $clientId, string $clientSecret)
     {
+        $options = [];
         $options['form_params'] = [
         'grant_type' => 'client_credentials',
         'client_id' => $clientId,
@@ -34,7 +35,7 @@ class OAuth2 extends Endpoint
 
         $options['headers']['content-type'] = 'application/x-www-form-urlencoded';
 
-        $response = $this->client->request('post', $this->endpoint, $options, '', false);
+        $response = $this->client->request('post', $this->endpoint, $options);
         $data = $response->getData();
 
         if (empty($data->access_token)) {
