@@ -28,9 +28,9 @@ class OAuth2 extends Endpoint
     {
         $options = [];
         $options['form_params'] = [
-        'grant_type' => 'client_credentials',
-        'client_id' => $clientId,
-        'client_secret' => $clientSecret
+            'grant_type' => 'client_credentials',
+            'client_id' => $clientId,
+            'client_secret' => $clientSecret
         ];
 
         $options['headers']['content-type'] = 'application/x-www-form-urlencoded';
