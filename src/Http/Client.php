@@ -148,9 +148,9 @@ class Client
             // Make a request with given parameters.
             return new Response($this->client->request($method, $url, $options));
         } catch (ServerException $e) {
-            throw OrangeDamException::create($e);
+            throw new OrangeDamException($e);
         } catch (ClientException $e) {
-            throw BadRequestException::create($e);
+            throw new BadRequestException($e);
         }
     }
 
