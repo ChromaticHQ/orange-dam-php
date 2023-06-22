@@ -3,6 +3,7 @@
 namespace Chromatic\OrangeDam\Exceptions;
 
 use Exception;
+use Throwable;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Exception\RequestException;
 
@@ -28,14 +29,25 @@ class OrangeDamException extends Exception
     /**
      * {@inheritdoc}
      */
-    public function __construct(RequestException $guzzleException)
+    final public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)
     {
-        parent::__construct(
-            $this->sanitizeResponseMessage($guzzleException->getMessage()),
-            $guzzleException->getMessage(),
+        parent::__construct($message, $code, $previous);
+    }
+
+    /**
+     * Creates method.
+     */
+    public static function create(RequestException $guzzleException): self
+    {
+        $e = new static(
+            static::sanitizeResponseMessage($guzzleException->getMessage()),
+            $guzzleException->getCode(),
             $guzzleException
         );
-        $this->response = $guzzleException->getResponse();
+
+        $e->response = $guzzleException->getResponse();
+
+        return $e;
     }
 
     /**
@@ -47,7 +59,7 @@ class OrangeDamException extends Exception
      * @return string
      *   Sanitized response message.
      */
-    protected function sanitizeResponseMessage(string $message): string
+    protected static function sanitizeResponseMessage(string $message): string
     {
         return preg_replace('/(token)=[a-z0-9-]+/i', '$1=***', $message);
     }
