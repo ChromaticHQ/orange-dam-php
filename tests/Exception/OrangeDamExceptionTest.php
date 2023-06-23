@@ -9,13 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 final class OrangeDamExceptionTest extends TestCase
 {
-    public function testClassConstructor()
+    public function testClassConstructor(): void
     {
         $exception = new OrangeDamException('Test exception text.');
         $this->assertInstanceOf(OrangeDamException::class, $exception);
     }
 
-    public function testSanitizeResponse()
+    public function testSanitizeResponse(): void
     {
         $req = new Request('GET', '/');
         $res = new Response(200);
