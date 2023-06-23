@@ -21,6 +21,6 @@ final class OrangeDamExceptionTest extends TestCase
         $res = new Response(200);
         $e = new RequestException('token=12345 Test response message.', $req, $res);
         $orangeException = OrangeDamException::create($e);
-        $this->assertEquals($orangeException->getMessage(), 'token=*** Test response message.');
+        $this->assertSame($orangeException->getMessage(), 'token=*** Test response message.');
     }
 }
