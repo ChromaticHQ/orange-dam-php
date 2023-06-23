@@ -89,9 +89,9 @@ class Client
         // Creates a new instance
         if (is_null($client)) {
             $client = new GuzzleClient([
-            'cookies' => true,
-            'timeout' => self::REQUEST_TIMEOUT,
-            'base_uri' => $config['base_path'],
+                'cookies' => true,
+                'timeout' => self::REQUEST_TIMEOUT,
+                'base_uri' => $config['base_path'],
             ]);
         }
         $this->client = $client;
