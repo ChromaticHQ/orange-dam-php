@@ -9,12 +9,18 @@ use PHPUnit\Framework\TestCase;
 
 final class OrangeDamExceptionTest extends TestCase
 {
+    /**
+     * Test creation of OrangeDamException results in expected object.
+     */
     public function testClassConstructor(): void
     {
         $exception = new OrangeDamException('Test exception text.');
         $this->assertInstanceOf(OrangeDamException::class, $exception);
     }
 
+    /**
+     * Test OrangeDamException message sanitization works as expected.
+     */
     public function testSanitizeResponse(): void
     {
         $req = new Request('GET', '/');

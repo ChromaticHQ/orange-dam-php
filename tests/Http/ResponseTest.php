@@ -9,6 +9,9 @@ use Psr\Http\Message\StreamInterface;
 
 final class ResponseTest extends TestCase
 {
+    /**
+     * Test creation of Response results in expected default values.
+     */
     public function testDefaultConstructor(): void
     {
         $response = new Response(new GuzzleResponse());
@@ -21,6 +24,9 @@ final class ResponseTest extends TestCase
         $this->assertSame(null, $response->toArray());
     }
 
+    /**
+     * Test Response header methods work as expected.
+     */
     public function testHeaders(): void
     {
         $response = new Response(new GuzzleResponse(200, ['Foo' => 'Bar']));

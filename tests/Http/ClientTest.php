@@ -9,6 +9,9 @@ use PHPUnit\Framework\TestCase;
 
 final class ClientTest extends TestCase
 {
+    /**
+     * Test creation of Client succeeds and returns object of expected type.
+     */
     public function testClientCreation(): void
     {
         $client = new Client([
@@ -17,12 +20,18 @@ final class ClientTest extends TestCase
         $this->assertInstanceOf(GuzzleClient::class, $client->client);
     }
 
+    /**
+     * Test creation of Client with missing base_path results in OrangeDamException.
+     */
     public function testBasePathMissingException(): void
     {
         $this->expectException(OrangeDamException::class);
         $client = new Client();
     }
 
+    /**
+     * Test request with missing argument results in InvalidArgumentException.
+     */
     public function testMissingApiToken(): void
     {
         $client = new Client([
