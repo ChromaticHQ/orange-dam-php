@@ -50,7 +50,7 @@
         "phpstan": "vendor/bin/phpstan analyse .",
         "rector": "vendor/bin/rector process --dry-run",
         "rector-fix": "vendor/bin/rector process",
-        "phpunit": "vendor/bin/phpunit",
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
         "test": [
             "@phpcs",
             "@phpstan",

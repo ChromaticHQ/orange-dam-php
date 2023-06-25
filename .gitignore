@@ -1,4 +1,6 @@
 composer.lock
 vendor/
 .idea
+# Ignore generated PHPUnit files
+/tests/phpunit
 .phpunit.result.cache
