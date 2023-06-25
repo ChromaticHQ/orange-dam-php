@@ -4,6 +4,7 @@ namespace Chromatic\OrangeDam\Http;
 
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
@@ -15,13 +16,19 @@ final class ResponseTest extends TestCase
     public function testDefaultConstructor(): void
     {
         $response = new Response(new GuzzleResponse());
+        $this->assertSame(null, $response->__get('testData'));
+        $this->assertSame(null, $response->getData());
+        $this->assertSame(null, $response->toArray());
         $this->assertInstanceOf(StreamInterface::class, $response->getBody());
         $this->assertInstanceOf(ResponseInterface::class, $response->withStatus(200));
         $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame([], $response->getHeaders());
+        $this->assertSame('OK', $response->getReasonPhrase());
         $this->assertSame('1.1', $response->getProtocolVersion());
-        $this->assertSame(null, $response->getData());
-        $this->assertSame(null, $response->toArray());
+        $this->assertInstanceOf(MessageInterface::class, $response->withProtocolVersion('1.1'));
+        $this->assertSame([], $response->getHeaders());
+        $this->assertInstanceOf(MessageInterface::class, $response->withHeader('HeaderName', 'HeaderValue'));
+        $this->assertInstanceOf(MessageInterface::class, $response->withAddedHeader('HeaderName', 'HeaderValue'));
+        $this->assertInstanceOf(MessageInterface::class, $response->withoutHeader('HeaderName'));
     }
 
     /**

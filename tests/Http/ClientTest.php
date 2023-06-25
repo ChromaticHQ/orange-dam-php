@@ -40,4 +40,17 @@ final class ClientTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $client->request('testMethod', 'testEndpoint');
     }
+
+    /**
+     * Test setOauth2Token().
+     */
+    public function testSetOauthToken(): void
+    {
+        $client = new Client([
+            'base_path' => 'https://test.com',
+        ]);
+        $client->setOauth2Token('example-token');
+        $this->assertSame(true, $client->oauth2);
+        $this->assertSame('example-token', $client->token);
+    }
 }

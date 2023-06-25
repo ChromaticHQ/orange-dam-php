@@ -23,10 +23,26 @@ final class OrangeDamExceptionTest extends TestCase
      */
     public function testSanitizeResponse(): void
     {
-        $req = new Request('GET', '/');
-        $res = new Response(200);
-        $e = new RequestException('token=12345 Test response message.', $req, $res);
+        $e = new RequestException(
+            'token=12345 Test response message.',
+            new Request('GET', '/'),
+            new Response(200)
+        );
         $orangeException = OrangeDamException::create($e);
         $this->assertSame($orangeException->getMessage(), 'token=*** Test response message.');
+    }
+
+    /**
+     * Test OrangeDamException getResponse() method.
+     */
+    public function testGetResponse(): void
+    {
+        $e = new RequestException(
+            '',
+            new Request('GET', '/'),
+            new Response(200)
+        );
+        $orangeException = OrangeDamException::create($e);
+        $this->assertInstanceOf(Response::class, $orangeException->getResponse());
     }
 }

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" beStrictAboutTestsThatDoNotTestAnything="true" beStrictAboutOutputDuringTests="true" beStrictAboutChangesToGlobalState="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" beStrictAboutTestsThatDoNotTestAnything="true" beStrictAboutOutputDuringTests="true" beStrictAboutChangesToGlobalState="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.2/phpunit.xsd">
   <coverage>
-    <include>
-      <directory>./src</directory>
-    </include>
     <report>
       <clover outputFile="tests/phpunit/results/coverage.xml"/>
       <html outputDirectory="tests/phpunit/results/html"/>
@@ -23,4 +20,9 @@
   </testsuites>
   <!-- Filter for coverage reports. -->
   <logging/>
+  <source>
+    <include>
+      <directory>./src</directory>
+    </include>
+  </source>
 </phpunit>
