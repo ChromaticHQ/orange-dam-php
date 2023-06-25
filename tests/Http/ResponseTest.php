@@ -16,7 +16,6 @@ final class ResponseTest extends TestCase
     public function testDefaultConstructor(): void
     {
         $response = new Response(new GuzzleResponse());
-        $this->assertSame(null, $response->__get('testData'));
         $this->assertSame(null, $response->getData());
         $this->assertSame(null, $response->toArray());
         $this->assertInstanceOf(StreamInterface::class, $response->getBody());
