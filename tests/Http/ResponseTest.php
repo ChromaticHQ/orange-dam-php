@@ -37,7 +37,7 @@ final class ResponseTest extends TestCase
     {
         $response = new Response(new GuzzleResponse(200, ['Foo' => 'Bar']));
         $headers = $response->getHeaders();
-        $this->assertSame(true, $response->hasHeader('Foo'));
+        $this->assertTrue($response->hasHeader('Foo'));
         $this->assertSame('Bar', $response->getHeaderLine('Foo'));
         $this->assertSame([0 => 'Bar'], $response->getHeader('Foo'));
     }

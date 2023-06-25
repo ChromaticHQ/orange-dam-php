@@ -50,7 +50,7 @@ final class ClientTest extends TestCase
             'base_path' => 'https://test.com',
         ]);
         $client->setOauth2Token('example-token');
-        $this->assertSame(true, $client->oauth2);
+        $this->assertTrue($client->oauth2);
         $this->assertSame('example-token', $client->token);
     }
 }
