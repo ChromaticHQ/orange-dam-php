@@ -3,6 +3,7 @@
 namespace Chromatic\OrangeDam\Exceptions;
 
 use Exception;
+use Throwable;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Exception\RequestException;
 
@@ -23,6 +24,14 @@ class OrangeDamException extends Exception
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
     }
 
     /**
