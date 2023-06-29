@@ -1,0 +1,8 @@
+parameters:
+    checkMissingIterableValueType: false
+    customRulesetUsed: true
+    level: 1
+    reportUnmatchedIgnoredErrors: true
+    excludePaths:
+        analyseAndScan:
+            - vendor/
