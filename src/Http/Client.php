@@ -59,7 +59,7 @@ class Client
      *
      * @var string
      */
-    protected $user_agent = 'ChromaticHQ_OrangeDam_PHP/1.0.0 (https://github.com/ChromaticHQ/orange-dam-php)';
+    protected $user_agent = 'Chromatic_OrangeDam_PHP/1.0.0 (https://github.com/ChromaticHQ/orange-dam-php)';
 
     /**
      * Constructor.
