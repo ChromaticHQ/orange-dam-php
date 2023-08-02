@@ -69,4 +69,21 @@ class DataTable extends Endpoint
             ['form_params' => $params],
         );
     }
+
+  /**
+   * Get data for all document types.
+   *
+   * @param array $params
+   *   Optional parameters.
+   *
+   * @return \Chromatic\OrangeDam\Http\Response
+   */
+    public function getDocumentData(array $params = [])
+    {
+        return $this->client->request(
+            'post',
+            static::API_BASE_PATH . 'Documents.All:Read',
+            ['form_params' => $params],
+        );
+    }
 }
