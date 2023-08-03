@@ -1,7 +1,7 @@
 {
     "name": "chromatic/orange-dam-php",
     "description": "Orange Dam PHP API client",
-    "keywords": [ "orange-logic", "orange-dam", "dam", "api" ],
+    "keywords": [ "orange-logic", "orange-dam", "orange-mam", "cortext", "dam", "api" ],
     "license": "Apache-2.0",
     "homepage": "https://github.com/ChromaticHQ/orange-dam-php",
     "authors": [
