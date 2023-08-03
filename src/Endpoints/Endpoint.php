@@ -9,7 +9,7 @@ abstract class Endpoint
     /**
      * Client instance.
      *
-     * @var \GuzzleHttp\Client
+     * @var \Chromatic\OrangeDam\Http\Client
      */
     protected $client;
 
