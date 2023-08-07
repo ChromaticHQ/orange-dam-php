@@ -35,7 +35,7 @@ class OAuth2 extends Endpoint
 
         $options['headers']['content-type'] = 'application/x-www-form-urlencoded';
 
-        $response = $this->client->request('post', $this->endpoint, $options);
+        $response = $this->client->request('post', $this->endpoint, $options, '', false);
         $data = $response->getData();
 
         if (empty($data->access_token)) {
