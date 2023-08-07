@@ -25,8 +25,6 @@ class Response implements ResponseInterface
     /**
      * Constructor.
      *
-     * @param ResponseInterface $response
-     *   Response instance.
      */
     public function __construct(ResponseInterface $response)
     {

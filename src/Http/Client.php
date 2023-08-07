@@ -64,16 +64,9 @@ class Client
     /**
      * Constructor.
      *
-     * @param array $config
-     *   Configuration array.
-     * @param GuzzleClient $client
-     *   The Http Client (Defaults to Guzzle).
-     * @param array $clientOptions
-     *   Options to be passed to Guzzle upon each request.
-     *
      * @throws \Chromatic\OrangeDam\Exceptions\OrangeDamException
      */
-    public function __construct(array $config = [], $client = null, array $clientOptions = [])
+    public function __construct(array $config = [], GuzzleClient $client = null, array $clientOptions = [])
     {
         // Set default property values.
         $this->token = null;
@@ -99,17 +92,6 @@ class Client
 
     /**
      * Send the request.
-     *
-     * @param string $method
-     *   The HTTP request verb.
-     * @param string $endpoint
-     *   The Orange DAM API endpoint.
-     * @param array $options
-     *   An array of options to send with the request.
-     * @param string $query_string
-     *   A query string to send with the request.
-     * @param bool $requires_auth
-     *   Whether or not this Orange DAM API endpoint requires authentication.
      *
      * @return ResponseInterface|\Chromatic\OrangeDam\Http\Response
      *
@@ -156,9 +138,6 @@ class Client
 
     /**
      * Set OAuth2 parameters.
-     *
-     * @param string $token
-     *   OAuth2.0 authentication token.
      */
     public function setOauth2Token(string $token)
     {

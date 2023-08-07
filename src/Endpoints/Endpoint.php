@@ -15,8 +15,6 @@ abstract class Endpoint
 
     /**
      * Constructor.
-     *
-     * @param \Chromatic\OrangeDam\Http\Client $client
      */
     public function __construct(Client $client)
     {

@@ -22,9 +22,6 @@ class DataTable extends Endpoint
     /**
      * List all keywords.
      *
-     * @param array $params
-     *   Optional parameters.
-     *
      * @return \Chromatic\OrangeDam\Http\Response
      */
     public function listKeywords(array $params = [])
@@ -38,9 +35,6 @@ class DataTable extends Endpoint
 
     /**
      * List all keyword relationships.
-     *
-     * @param array $params
-     *   Optional parameters.
      *
      * @return \Chromatic\OrangeDam\Http\Response
      */
@@ -56,9 +50,6 @@ class DataTable extends Endpoint
     /**
      * List all keyword deletions.
      *
-     * @param array $params
-     *   Optional parameters.
-     *
      * @return \Chromatic\OrangeDam\Http\Response
      */
     public function listKeywordDeletions(array $params = [])
@@ -70,14 +61,11 @@ class DataTable extends Endpoint
         );
     }
 
-  /**
-   * Get data for all document types.
-   *
-   * @param array $params
-   *   Optional parameters.
-   *
-   * @return \Chromatic\OrangeDam\Http\Response
-   */
+    /**
+     * Get data for all document types.
+     *
+     * @return \Chromatic\OrangeDam\Http\Response
+     */
     public function getDocumentData(array $params = [])
     {
         return $this->client->request(

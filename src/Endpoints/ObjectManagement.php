@@ -22,9 +22,6 @@ class ObjectManagement extends Endpoint
     /**
      * List all deleted objects.
      *
-     * @param array $params
-     *   Optional parameters.
-     *
      * @return \Chromatic\OrangeDam\Http\Response
      */
     public function listDeletedObjects(array $params = [])

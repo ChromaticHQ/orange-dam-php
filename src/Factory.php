@@ -24,13 +24,6 @@ class Factory
     /**
      * Constructor.
      *
-     * @param array $config
-     *   An array of configurations. You need at least the 'key'.
-     * @param Client $client
-     *   Client instance.
-     * @param array $clientOptions
-     *   Options to be sent with each request.
-     *
      * @throws OrangeDamException
      */
     public function __construct(array $config = [], Client $client = null, array $clientOptions = [])
@@ -43,10 +36,8 @@ class Factory
 
     /**
      * Return an instance of a Endpoint based on the method called.
-     *
-     * @param mixed $args
      */
-    public function __call(string $name, $args): Endpoint
+    public function __call(string $name, mixed $args): Endpoint
     {
         $endpoint = 'Chromatic\\OrangeDam\\Endpoints\\' . ucfirst($name);
 

@@ -22,11 +22,6 @@ class Search extends Endpoint
     /**
      * Make search request.
      *
-     * @param array $params
-     *   Optional parameters.
-     * @param array $options
-     *   Request options.
-     *
      * @return \Chromatic\OrangeDam\Http\Response
      */
     public function search(array $params = [], array $options = [])
@@ -41,9 +36,6 @@ class Search extends Endpoint
 
     /**
      * List all fields.
-     *
-     * @param array $params
-     *   Optional parameters.
      *
      * @return \Chromatic\OrangeDam\Http\Response
      */
