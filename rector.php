@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\LevelSetList;
+use Rector\Php80\Rector\FunctionLike\MixedTypeRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -13,6 +14,10 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Define sets of rules.
     $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_73
+        LevelSetList::UP_TO_PHP_81
     ]);
+
+    $rectorConfig->skip([
+        MixedTypeRector::class,
+  ]);
 };

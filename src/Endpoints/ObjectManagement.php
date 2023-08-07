@@ -17,7 +17,7 @@ class ObjectManagement extends Endpoint
      * Date format: Use one of these 2 ISO 8601 date formats:
      * YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS
      */
-    public const DATE_FORMAT = 'Y-m-d\TH:i:s';
+    final public const DATE_FORMAT = 'Y-m-d\TH:i:s';
 
     /**
      * List all deleted objects.

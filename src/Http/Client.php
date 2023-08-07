@@ -17,7 +17,7 @@ class Client
      *
      * @var integer
      */
-    public const REQUEST_TIMEOUT = 30;
+    final public const REQUEST_TIMEOUT = 30;
 
     /**
      * Access token.
