@@ -16,11 +16,11 @@ class MediaFile extends Endpoint
      *
      * @return \Chromatic\OrangeDam\Http\Response
      */
-    public function getCaptions(string $video_id, array $params = [])
+    public function getCaptions(string $videoRecordId, array $params = [])
     {
         return $this->client->request(
             'get',
-            static::API_BASE_PATH . 'captions/41Z_v1/' . $video_id,
+            static::API_BASE_PATH . 'captions/41Z_v1/' . $videoRecordId,
             $params,
         );
     }
