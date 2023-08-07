@@ -24,6 +24,8 @@ class Factory
     /**
      * Constructor.
      *
+     * The config array requires a 'key' entry.
+     *
      * @throws OrangeDamException
      */
     public function __construct(array $config = [], Client $client = null, array $clientOptions = [])
