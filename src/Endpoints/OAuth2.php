@@ -16,11 +16,6 @@ class OAuth2 extends Endpoint
     /**
      * Get OAuth 2.0 Access Token.
      *
-     * @param string $clientId
-     *   The Client ID of your app.
-     * @param string $clientSecret
-     *   The Client Secret of your app.
-     *
      * @return object
      *   An object with token data (token, expiration data).
      */

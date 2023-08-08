@@ -17,13 +17,10 @@ class DataTable extends Endpoint
      * Date format: Use one of these 2 ISO 8601 date formats:
      * YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS
      */
-    public const DATE_FORMAT = 'Y-m-d\TH:i:s';
+    final public const DATE_FORMAT = 'Y-m-d\TH:i:s';
 
     /**
      * List all keywords.
-     *
-     * @param array $params
-     *   Optional parameters.
      *
      * @return \Chromatic\OrangeDam\Http\Response
      */
@@ -39,9 +36,6 @@ class DataTable extends Endpoint
     /**
      * List all keyword relationships.
      *
-     * @param array $params
-     *   Optional parameters.
-     *
      * @return \Chromatic\OrangeDam\Http\Response
      */
     public function listKeywordRelationships(array $params = [])
@@ -56,9 +50,6 @@ class DataTable extends Endpoint
     /**
      * List all keyword deletions.
      *
-     * @param array $params
-     *   Optional parameters.
-     *
      * @return \Chromatic\OrangeDam\Http\Response
      */
     public function listKeywordDeletions(array $params = [])
@@ -70,14 +61,11 @@ class DataTable extends Endpoint
         );
     }
 
-  /**
-   * Get data for all document types.
-   *
-   * @param array $params
-   *   Optional parameters.
-   *
-   * @return \Chromatic\OrangeDam\Http\Response
-   */
+    /**
+     * Get data for all document types.
+     *
+     * @return \Chromatic\OrangeDam\Http\Response
+     */
     public function getDocumentData(array $params = [])
     {
         return $this->client->request(

@@ -53,9 +53,6 @@ class OrangeDamException extends Exception
     /**
      * Removes sensitive data from response message.
      *
-     * @param string $message
-     *   Response message.
-     *
      * @return string
      *   Sanitized response message.
      */

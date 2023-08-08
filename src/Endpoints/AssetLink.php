@@ -14,9 +14,6 @@ class AssetLink extends Endpoint
     /**
      * Create links to formatted assets.
      *
-     * @param array $params
-     *   Optional parameters.
-     *
      * @return \Chromatic\OrangeDam\Http\Response
      */
     public function createFormatLink(array $params = [])

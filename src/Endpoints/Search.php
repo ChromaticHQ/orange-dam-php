@@ -17,15 +17,10 @@ class Search extends Endpoint
      * Use the format YYYY-MM-DDTHH.MM.SS (e.g. 1977-04-22T16.00.00), using the
      * 24-hour clock.
      */
-    public const DATE_FORMAT = 'Y-m-d\TH.i.s';
+    final public const DATE_FORMAT = 'Y-m-d\TH.i.s';
 
     /**
      * Make search request.
-     *
-     * @param array $params
-     *   Optional parameters.
-     * @param array $options
-     *   Request options.
      *
      * @return \Chromatic\OrangeDam\Http\Response
      */
@@ -41,9 +36,6 @@ class Search extends Endpoint
 
     /**
      * List all fields.
-     *
-     * @param array $params
-     *   Optional parameters.
      *
      * @return \Chromatic\OrangeDam\Http\Response
      */
