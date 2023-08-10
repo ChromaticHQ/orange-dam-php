@@ -28,7 +28,7 @@ The Orange DAM API is extensive and this library just scratches the surface of a
 - PDF conversion.
 - Extract waveforms from audio content.
 
-_NOTE:_ This library and the associated module(s) that depend on it provide the foundation for a custom integration with Orange DAM. Custom development work will be needed to create a data model in your CMS, build and run the migrations that map your data, as well as integrate with the events this module offers to allow for additional customization of the integration.
+_NOTE:_ This library and the associated module(s) that depend on it provide the foundation for a custom integration with Orange DAM. Custom development work will be needed to create a data model in your application, map your data, and/or integrate with the events this module offers.
 
 To further development of this library or its associated modules via sponsorship or to inquire about a custom integration, [contact Chromatic](https://chromatichq.com/contact-us/)!
 
