@@ -61,5 +61,4 @@ class Search extends Endpoint
             ['form_params' => $params],
         );
     }
-
 }
