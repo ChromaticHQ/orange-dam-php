@@ -47,4 +47,18 @@ class Search extends Endpoint
             ['form_params' => $params],
         );
     }
+
+    /**
+     * List all criteria.
+     *
+     * @return \Chromatic\OrangeDam\Http\Response
+     */
+    public function listCriteria(array $params = [])
+    {
+        return $this->client->request(
+            'post',
+            static::API_BASE_PATH . 'ListCriteria',
+            ['form_params' => $params],
+        );
+    }
 }
