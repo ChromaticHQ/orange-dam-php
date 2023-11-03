@@ -118,7 +118,7 @@ class Client
         $url = $endpoint . '?' . $full_query_string;
 
         // Wraps to passed client options.
-        $options = array_merge($this->clientOptions, $options);
+        $options = [...$this->clientOptions, ...$options];
         $options['headers']['User-Agent'] = $this->user_agent;
 
         // Adds OAuth2.0 authentication token to the request.
