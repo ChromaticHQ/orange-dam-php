@@ -54,7 +54,7 @@ class Factory
         try {
             $endpoint = new $endpoint_class($this->client, ...$args);
         } catch (\Throwable $e) {
-            throw new OrangeDamUnimplementedEndpointException($endpoint_name, $previous);
+            throw new OrangeDamUnimplementedEndpointException($endpoint_name, $e);
         }
 
         return $endpoint;
