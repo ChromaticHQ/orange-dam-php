@@ -16,7 +16,7 @@ class Factory
     /**
      * Project URL
      */
-    protected const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
+    public const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
 
     /**
      * Client instance.
@@ -53,16 +53,8 @@ class Factory
         $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name;
         try {
             $endpoint = new $endpoint_class($this->client, ...$args);
-        } catch (\Exception $e) {
-            $message = sprintf(
-                "Endpoint %s does not exist. Compare your endpoint name to\n
-                the endpoint classes in the Endpoints/ directory. If the \n
-                Orange Dam Endpoint you wish to use has not been implemented\n
-                consider contributing an endpoint to %s",
-                htmlspecialchars(escapeshellarg($endpoint_name)),
-                static::PROJECT_URL,
-            );
-            throw new OrangeDamUnimplementedEndpointException($message);
+        } catch (\Throwable $e) {
+            throw new OrangeDamUnimplementedEndpointException($endpoint_name, $previous);
         }
 
         return $endpoint;
