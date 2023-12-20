@@ -41,10 +41,10 @@ composer require "chromatic/orange-dam-php"
 ### Usage
 
 ```php
-use Chromatic\OrangeDam\Factory as OrangeDamClientFactory;
+use Chromatic\OrangeDam\Factory as OrangeDamApi;
 
 // Create client instance.
-$client = new OrangeDamClientFactory([
+$api = new OrangeDamApi([
     'base_path' => 'https://orange-dam-api-server-example.com',
     'query_string' => 'SESSION=XXX',
   ],
@@ -53,11 +53,11 @@ $client = new OrangeDamClientFactory([
 );
 
 // Authenticate with OAuth2.0.
-$tokens = $client->oAuth2()->getTokensByCode(
+$tokens = $api->oAuth2()->getTokensByCode(
   'CLIENT_ID_XXX',
   'CLIENT_SECRET_XXX',
 );
-$client->getClient()->setOauth2Token($tokens->access_token);
+$api->getClient()->setOauth2Token($tokens->access_token);
 
 // Make a search request with given parameters.
 $params = [
@@ -65,6 +65,6 @@ $params = [
   'fields' => 'Title,SystemIdentifier,Caption',
   'format' => 'json',
 ];
-$response = $client->search()->search($params);
+$response = $api->getEndpoint('Search')->search($params);
 $content = $response->getData();
 ```
