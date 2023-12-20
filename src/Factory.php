@@ -41,7 +41,7 @@ class Factory
     /**
      * Returns the Orange DAM API Endpoint requested by name.
      */
-    public function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint
+    private function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint
     {
         $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name;
         try {
@@ -55,10 +55,6 @@ class Factory
 
     /**
      * Returns an Orange Dam API AssetLink endpoint.
-     *
-     * Use getEndpoint('AssetLink') instead.
-     *
-     * @deprecated
      */
     public function assetLink(): AssetLink
     {
@@ -67,10 +63,6 @@ class Factory
 
     /**
      * Returns an Orange Dam API DataTable endpoint.
-     *
-     * Use getEndpoint('DataTable') instead.
-     *
-     * @deprecated
      */
     public function dataTable(): DataTable
     {
@@ -79,10 +71,6 @@ class Factory
 
     /**
      * Returns an Orange Dam API MediaFile endpoint.
-     *
-     * Use getEndpoint('MediaFile') instead.
-     *
-     * @deprecated
      */
     public function mediaFile(): MediaFile
     {
@@ -91,10 +79,6 @@ class Factory
 
     /**
      * Returns an Orange Dam API OAuth2 endpoint.
-     *
-     * Use getEndpoint('OAuth2') instead.
-     *
-     * @deprecated
      */
     public function oAuth2(): OAuth2
     {
@@ -103,10 +87,6 @@ class Factory
 
     /**
      * Returns an Orange Dam API ObjectManagement endpoint.
-     *
-     * Use getEndpoint('ObjectManagement') instead.
-     *
-     * @deprecated
      */
     public function objectManagement(): ObjectManagement
     {
@@ -115,10 +95,6 @@ class Factory
 
     /**
      * Returns an Orange Dam API Search endpoint.
-     *
-     * Use getEndpoint('Search') instead.
-     *
-     * @deprecated
      */
     public function search(): Search
     {
@@ -127,8 +103,6 @@ class Factory
 
     /**
      * Returns an Orange DAM client instance.
-     *
-     *   An Orange DAM Client instance.
      */
     public function getClient(): Client
     {
