@@ -39,26 +39,11 @@ class Factory
     }
 
     /**
-     * Returns the Orange DAM API Endpoint requested by name.
-     */
-    private function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint
-    {
-        $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name;
-        try {
-            $endpoint = new $endpoint_class($this->client, ...$args);
-        } catch (\Throwable $e) {
-            throw new OrangeDamUnimplementedEndpointException($endpoint_name, $e);
-        }
-
-        return $endpoint;
-    }
-
-    /**
      * Returns an Orange Dam API AssetLink endpoint.
      */
     public function assetLink(): AssetLink
     {
-        return $this->getEndpoint('AssetLink');
+        return new AssetLink($this->client);
     }
 
     /**
@@ -66,7 +51,7 @@ class Factory
      */
     public function dataTable(): DataTable
     {
-        return $this->getEndpoint('DataTable');
+        return new DataTable($this->client);
     }
 
     /**
@@ -74,7 +59,7 @@ class Factory
      */
     public function mediaFile(): MediaFile
     {
-        return $this->getEndpoint('MediaFile');
+        return new MediaFile($this->client);
     }
 
     /**
@@ -82,7 +67,7 @@ class Factory
      */
     public function oAuth2(): OAuth2
     {
-        return $this->getEndpoint('OAuth2');
+        return new OAuth2($this->client);
     }
 
     /**
@@ -90,7 +75,7 @@ class Factory
      */
     public function objectManagement(): ObjectManagement
     {
-        return $this->getEndpoint('ObjectManagement');
+        return new ObjectManagement($this->client);
     }
 
     /**
@@ -98,7 +83,7 @@ class Factory
      */
     public function search(): Search
     {
-        return $this->getEndpoint('Search');
+        return new Search($this->client);
     }
 
     /**
