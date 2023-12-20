@@ -20,8 +20,6 @@ class Factory
 
     /**
      * Client instance.
-     *
-     * @var \Chromatic\OrangeDam\Http\Client
      */
     protected Client $client;
 
@@ -42,8 +40,6 @@ class Factory
 
     /**
      * Returns the Orange DAM API Endpoint requested by name.
-     *
-     *
      */
     public function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint
     {
