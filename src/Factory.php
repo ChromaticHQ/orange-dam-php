@@ -14,7 +14,7 @@ use Chromatic\OrangeDam\Http\Client;
 class Factory
 {
     /**
-     * Project URL
+     * Project URL.
      */
     final public const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
 
