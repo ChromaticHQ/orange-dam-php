@@ -53,8 +53,7 @@ class Factory
         $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name;
         try {
             $endpoint = new $endpoint_class($this->client, ...$args);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $message = sprintf(
                 "Endpoint %s does not exist. Compare your endpoint name to\n
                 the endpoint classes in the Endpoints/ directory. If the \n
