@@ -16,7 +16,7 @@ class Factory
     /**
      * Project URL
      */
-    public const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
+    final public const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
 
     /**
      * Client instance.
@@ -40,14 +40,11 @@ class Factory
         $this->client = $client;
     }
 
-  /**
-   * Returns the Orange DAM API Endpoint requested by name.
-   *
-   * @param string $endpoint_name
-   * @param mixed $args
-   *
-   * @return \Chromatic\OrangeDam\Endpoints\Endpoint
-   */
+    /**
+     * Returns the Orange DAM API Endpoint requested by name.
+     *
+     *
+     */
     public function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint
     {
         $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name;
@@ -65,7 +62,6 @@ class Factory
      *
      * Use getEndpoint('AssetLink') instead.
      *
-     * @return \Chromatic\OrangeDam\Endpoints\AssetLink
      * @deprecated
      */
     public function assetLink(): AssetLink
@@ -78,7 +74,6 @@ class Factory
      *
      * Use getEndpoint('DataTable') instead.
      *
-     * @return \Chromatic\OrangeDam\Endpoints\DataTable
      * @deprecated
      */
     public function dataTable(): DataTable
@@ -91,7 +86,6 @@ class Factory
      *
      * Use getEndpoint('MediaFile') instead.
      *
-     * @return \Chromatic\OrangeDam\Endpoints\MediaFile
      * @deprecated
      */
     public function mediaFile(): MediaFile
@@ -104,7 +98,6 @@ class Factory
      *
      * Use getEndpoint('OAuth2') instead.
      *
-     * @return \Chromatic\OrangeDam\Endpoints\OAuth2
      * @deprecated
      */
     public function oAuth2(): OAuth2
@@ -117,7 +110,6 @@ class Factory
      *
      * Use getEndpoint('ObjectManagement') instead.
      *
-     * @return \Chromatic\OrangeDam\Endpoints\ObjectManagement
      * @deprecated
      */
     public function objectManagement(): ObjectManagement
@@ -130,7 +122,6 @@ class Factory
      *
      * Use getEndpoint('Search') instead.
      *
-     * @return \Chromatic\OrangeDam\Endpoints\Search
      * @deprecated
      */
     public function search(): Search
@@ -141,7 +132,6 @@ class Factory
     /**
      * Returns an Orange DAM client instance.
      *
-     * @return Client
      *   An Orange DAM Client instance.
      */
     public function getClient(): Client
