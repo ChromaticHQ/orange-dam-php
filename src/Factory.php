@@ -50,20 +50,21 @@ class Factory
    * @return \Chromatic\OrangeDam\Endpoints\Endpoint
    */
     public function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint {
-      $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name. 'X';
-      try {
-        $endpoint = new $endpoint_class($this->client, ...$args);
-      }
-      catch (\Exception $e) {
-        $message = sprintf('Endpoint %s does not exist. Compare your endpoint name to the endpoint classes in the Endpoints/ directory.
-        If the Orange Dam endpoint you wish to use has not been implemented consider contributing an endpoint to %s',
-          htmlspecialchars(escapeshellarg($endpoint_name)),
-          static::PROJECT_URL,
-        );
-        throw new OrangeDamUnimplementedEndpointException($message);
-      }
+        $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name. 'X';
+        try {
+            $endpoint = new $endpoint_class($this->client, ...$args);
+        }
+        catch (\Exception $e) {
+            $message = sprintf(
+                "Endpoint %s does not exist. Compare your endpoint name to the endpoint classes in the Endpoints/ directory.\n
+                If the Orange Dam endpoint you wish to use has not been implemented consider contributing an endpoint to %s",
+                htmlspecialchars(escapeshellarg($endpoint_name)),
+                static::PROJECT_URL,
+            );
+            throw new OrangeDamUnimplementedEndpointException($message);
+        }
 
-      return $endpoint;
+        return $endpoint;
     }
 
     /**
@@ -75,7 +76,7 @@ class Factory
      * @deprecated
      */
     public function assetLink(): AssetLink {
-      return $this->getEndpoint('AssetLink');
+        return $this->getEndpoint('AssetLink');
     }
 
     /**
@@ -87,7 +88,7 @@ class Factory
      * @deprecated
      */
     public function dataTable(): DataTable {
-      return $this->getEndpoint('DataTable');
+        return $this->getEndpoint('DataTable');
     }
 
     /**
@@ -99,7 +100,7 @@ class Factory
      * @deprecated
      */
     public function mediaFile(): MediaFile {
-      return $this->getEndpoint('MediaFile');
+        return $this->getEndpoint('MediaFile');
     }
 
     /**
@@ -111,7 +112,7 @@ class Factory
      * @deprecated
      */
     public function oAuth2(): OAuth2 {
-      return $this->getEndpoint('OAuth2');
+        return $this->getEndpoint('OAuth2');
     }
 
     /**
@@ -123,7 +124,7 @@ class Factory
      * @deprecated
      */
     public function objectManagement(): ObjectManagement {
-      return $this->getEndpoint('ObjectManagement');
+        return $this->getEndpoint('ObjectManagement');
     }
 
     /**
@@ -135,7 +136,7 @@ class Factory
      * @deprecated
      */
     public function search(): Search {
-      return $this->getEndpoint('Search');
+        return $this->getEndpoint('Search');
     }
 
     /**
