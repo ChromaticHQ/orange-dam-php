@@ -3,7 +3,7 @@
 namespace Chromatic\OrangeDam;
 
 use Chromatic\OrangeDam\Endpoints\{AssetLink, DataTable, Endpoint, MediaFile, OAuth2, ObjectManagement, Search};
-use Chromatic\OrangeDam\Exceptions\{OrangeDamException, OrangeDamUnimplementedEndpointException};
+use Chromatic\OrangeDam\Exceptions\OrangeDamException;
 use Chromatic\OrangeDam\Http\Client;
 
 /**
