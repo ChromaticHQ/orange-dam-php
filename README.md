@@ -65,6 +65,6 @@ $params = [
   'fields' => 'Title,SystemIdentifier,Caption',
   'format' => 'json',
 ];
-$response = $api->getEndpoint('Search')->search($params);
+$response = $api->search()->search($params);
 $content = $response->getData();
 ```
