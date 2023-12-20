@@ -1,6 +1,10 @@
+# Composer
 composer.lock
 vendor/
+# Editors
 .idea
-# Ignore generated PHPUnit files
+# OS detritus
+.DS_Store
+# PHPUnit
 /tests/phpunit
 .phpunit.result.cache
