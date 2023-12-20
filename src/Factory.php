@@ -2,24 +2,26 @@
 
 namespace Chromatic\OrangeDam;
 
+use Chromatic\OrangeDam\Endpoints\{AssetLink, DataTable, Endpoint, MediaFile, OAuth2, ObjectManagement, Search};
+use Chromatic\OrangeDam\Exceptions\{OrangeDamException, OrangeDamUnimplementedEndpointException};
 use Chromatic\OrangeDam\Http\Client;
-use Chromatic\OrangeDam\Endpoints\Endpoint;
-use Chromatic\OrangeDam\Exceptions\OrangeDamException;
 
 /**
  * Class Factory.
  *
- * @method \Chromatic\OrangeDam\Endpoints\Search       search()
- * @method \Chromatic\OrangeDam\Endpoints\OAuth2       oAuth2()
- */
+ * Manages the connection to Orange DAM API and a library of endpoints.
+*/
 class Factory
 {
     /**
-     * Client instance.
-     *
-     * @var Client
+     * Project URL.
      */
-    protected $client;
+    final public const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
+
+    /**
+     * Client instance.
+     */
+    protected Client $client;
 
     /**
      * Constructor.
@@ -37,20 +39,96 @@ class Factory
     }
 
     /**
-     * Return an instance of a Endpoint based on the method called.
+     * Returns the Orange DAM API Endpoint requested by name.
      */
-    public function __call(string $name, mixed $args): Endpoint
+    public function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint
     {
-        $endpoint = 'Chromatic\\OrangeDam\\Endpoints\\' . ucfirst($name);
+        $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name;
+        try {
+            $endpoint = new $endpoint_class($this->client, ...$args);
+        } catch (\Throwable $e) {
+            throw new OrangeDamUnimplementedEndpointException($endpoint_name, $e);
+        }
 
-        return new $endpoint($this->client, ...$args);
+        return $endpoint;
     }
 
     /**
-     * Returns client instance.
+     * Returns an Orange Dam API AssetLink endpoint.
      *
-     * @return Client
-     *   Client instance.
+     * Use getEndpoint('AssetLink') instead.
+     *
+     * @deprecated
+     */
+    public function assetLink(): AssetLink
+    {
+        return $this->getEndpoint('AssetLink');
+    }
+
+    /**
+     * Returns an Orange Dam API DataTable endpoint.
+     *
+     * Use getEndpoint('DataTable') instead.
+     *
+     * @deprecated
+     */
+    public function dataTable(): DataTable
+    {
+        return $this->getEndpoint('DataTable');
+    }
+
+    /**
+     * Returns an Orange Dam API MediaFile endpoint.
+     *
+     * Use getEndpoint('MediaFile') instead.
+     *
+     * @deprecated
+     */
+    public function mediaFile(): MediaFile
+    {
+        return $this->getEndpoint('MediaFile');
+    }
+
+    /**
+     * Returns an Orange Dam API OAuth2 endpoint.
+     *
+     * Use getEndpoint('OAuth2') instead.
+     *
+     * @deprecated
+     */
+    public function oAuth2(): OAuth2
+    {
+        return $this->getEndpoint('OAuth2');
+    }
+
+    /**
+     * Returns an Orange Dam API ObjectManagement endpoint.
+     *
+     * Use getEndpoint('ObjectManagement') instead.
+     *
+     * @deprecated
+     */
+    public function objectManagement(): ObjectManagement
+    {
+        return $this->getEndpoint('ObjectManagement');
+    }
+
+    /**
+     * Returns an Orange Dam API Search endpoint.
+     *
+     * Use getEndpoint('Search') instead.
+     *
+     * @deprecated
+     */
+    public function search(): Search
+    {
+        return $this->getEndpoint('Search');
+    }
+
+    /**
+     * Returns an Orange DAM client instance.
+     *
+     *   An Orange DAM Client instance.
      */
     public function getClient(): Client
     {
