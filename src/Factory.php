@@ -13,18 +13,17 @@ use Chromatic\OrangeDam\Http\Client;
 */
 class Factory
 {
-
     /**
      * Project URL
      */
-    const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
+    protected const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
 
     /**
      * Client instance.
      *
-     * @var Client
+     * @var \Chromatic\OrangeDam\Http\Client
      */
-    protected $client;
+    protected Client $client;
 
     /**
      * Constructor.
@@ -49,15 +48,18 @@ class Factory
    *
    * @return \Chromatic\OrangeDam\Endpoints\Endpoint
    */
-    public function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint {
-        $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name. 'X';
+    public function getEndpoint(string $endpoint_name, mixed $args = []): Endpoint
+    {
+        $endpoint_class = 'Chromatic\\OrangeDam\\Endpoints\\' . $endpoint_name;
         try {
             $endpoint = new $endpoint_class($this->client, ...$args);
         }
         catch (\Exception $e) {
             $message = sprintf(
-                "Endpoint %s does not exist. Compare your endpoint name to the endpoint classes in the Endpoints/ directory.\n
-                If the Orange Dam endpoint you wish to use has not been implemented consider contributing an endpoint to %s",
+                "Endpoint %s does not exist. Compare your endpoint name to\n
+                the endpoint classes in the Endpoints/ directory. If the \n
+                Orange Dam Endpoint you wish to use has not been implemented\n
+                consider contributing an endpoint to %s",
                 htmlspecialchars(escapeshellarg($endpoint_name)),
                 static::PROJECT_URL,
             );
@@ -75,7 +77,8 @@ class Factory
      * @return \Chromatic\OrangeDam\Endpoints\AssetLink
      * @deprecated
      */
-    public function assetLink(): AssetLink {
+    public function assetLink(): AssetLink
+    {
         return $this->getEndpoint('AssetLink');
     }
 
@@ -87,7 +90,8 @@ class Factory
      * @return \Chromatic\OrangeDam\Endpoints\DataTable
      * @deprecated
      */
-    public function dataTable(): DataTable {
+    public function dataTable(): DataTable
+    {
         return $this->getEndpoint('DataTable');
     }
 
@@ -99,7 +103,8 @@ class Factory
      * @return \Chromatic\OrangeDam\Endpoints\MediaFile
      * @deprecated
      */
-    public function mediaFile(): MediaFile {
+    public function mediaFile(): MediaFile
+    {
         return $this->getEndpoint('MediaFile');
     }
 
@@ -111,7 +116,8 @@ class Factory
      * @return \Chromatic\OrangeDam\Endpoints\OAuth2
      * @deprecated
      */
-    public function oAuth2(): OAuth2 {
+    public function oAuth2(): OAuth2
+    {
         return $this->getEndpoint('OAuth2');
     }
 
@@ -123,7 +129,8 @@ class Factory
      * @return \Chromatic\OrangeDam\Endpoints\ObjectManagement
      * @deprecated
      */
-    public function objectManagement(): ObjectManagement {
+    public function objectManagement(): ObjectManagement
+    {
         return $this->getEndpoint('ObjectManagement');
     }
 
@@ -135,7 +142,8 @@ class Factory
      * @return \Chromatic\OrangeDam\Endpoints\Search
      * @deprecated
      */
-    public function search(): Search {
+    public function search(): Search
+    {
         return $this->getEndpoint('Search');
     }
 
