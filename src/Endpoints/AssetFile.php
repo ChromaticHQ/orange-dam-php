@@ -28,8 +28,8 @@ class AssetFile extends Endpoint
      */
     public function getFormatFile(string $format, string $sort = '', array $queryConditions = [])
     {
-        // @todo Is it over-reach to validate the format against some retrieved
-        // list of formats?
+        // @todo Decide whether we should be validating the sort keys and
+        //   the formats against retrieved or static lists.
         $query_string = "Format=$format";
         if ($sort) {
             $query_string .= '&Sort=' . rawurlencode($sort);
