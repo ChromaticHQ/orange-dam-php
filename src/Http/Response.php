@@ -29,7 +29,6 @@ class Response implements ResponseInterface
     public function __construct(ResponseInterface $response)
     {
         $this->response = $response;
-        $this->data = $this->getDataFromResponse($response);
     }
 
     /**
@@ -43,7 +42,7 @@ class Response implements ResponseInterface
      */
     public function __get($name)
     {
-        return $this->data->{$name};
+        return $this->getData()->{$name};
     }
 
     /**
@@ -54,6 +53,9 @@ class Response implements ResponseInterface
      */
     public function getData()
     {
+        if (is_null($this->data)) {
+            $this->data = $this->getDataFromResponse($this->response);
+        }
         return $this->data;
     }
 
@@ -87,6 +89,14 @@ class Response implements ResponseInterface
     public function getBody(): StreamInterface
     {
         return $this->response->getBody();
+    }
+
+    /**
+     * If there is no stream, consider it an empty response.
+     */
+    public function isEmpty(): bool
+    {
+        return is_null($this->response->getBody()->getSize());
     }
 
     /**

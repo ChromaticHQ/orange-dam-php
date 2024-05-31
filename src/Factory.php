@@ -2,7 +2,14 @@
 
 namespace Chromatic\OrangeDam;
 
-use Chromatic\OrangeDam\Endpoints\{AssetLink, DataTable, Endpoint, MediaFile, OAuth2, ObjectManagement, Search};
+use Chromatic\OrangeDam\Endpoints\{AssetFile,
+  AssetLink,
+  DataTable,
+  Endpoint,
+  MediaFile,
+  OAuth2,
+  ObjectManagement,
+  Search};
 use Chromatic\OrangeDam\Exceptions\OrangeDamException;
 use Chromatic\OrangeDam\Http\Client;
 
@@ -36,6 +43,11 @@ class Factory
             $client = new Client($config, null, $clientOptions);
         }
         $this->client = $client;
+    }
+
+    public function assetFile(): AssetFile
+    {
+        return new AssetFile($this->client);
     }
 
     /**
