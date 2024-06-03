@@ -45,6 +45,11 @@ class Factory
         $this->client = $client;
     }
 
+    /**
+     * Returns an Orange DAM API AssetFile endpoint.
+     *
+     * AssetFile streams back the requested file based on search criteria.
+     */
     public function assetFile(): AssetFile
     {
         return new AssetFile($this->client);
@@ -52,6 +57,8 @@ class Factory
 
     /**
      * Returns an Orange Dam API AssetLink endpoint.
+     *
+     * AssetLink returns a URL based on the requested parameters.
      */
     public function assetLink(): AssetLink
     {
