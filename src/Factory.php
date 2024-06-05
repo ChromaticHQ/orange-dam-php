@@ -2,7 +2,14 @@
 
 namespace Chromatic\OrangeDam;
 
-use Chromatic\OrangeDam\Endpoints\{AssetLink, DataTable, Endpoint, MediaFile, OAuth2, ObjectManagement, Search};
+use Chromatic\OrangeDam\Endpoints\{AssetFile,
+  AssetLink,
+  DataTable,
+  Endpoint,
+  MediaFile,
+  OAuth2,
+  ObjectManagement,
+  Search};
 use Chromatic\OrangeDam\Exceptions\OrangeDamException;
 use Chromatic\OrangeDam\Http\Client;
 
@@ -39,7 +46,19 @@ class Factory
     }
 
     /**
+     * Returns an Orange DAM API AssetFile endpoint.
+     *
+     * AssetFile streams back the requested file based on search criteria.
+     */
+    public function assetFile(): AssetFile
+    {
+        return new AssetFile($this->client);
+    }
+
+    /**
      * Returns an Orange Dam API AssetLink endpoint.
+     *
+     * AssetLink returns a URL based on the requested parameters.
      */
     public function assetLink(): AssetLink
     {
