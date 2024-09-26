@@ -108,15 +108,17 @@ class Response implements ResponseInterface
     /**
      * Returns the request string that created this response.
      */
-    public function getRequest(): string {
-      return $this->request;
+    public function getRequest(): string
+    {
+        return $this->request;
     }
 
     /**
      * Returns the request options array that created this response.
      */
-    public function getRequestOptions(): array {
-      return $this->requestOptions;
+    public function getRequestOptions(): array
+    {
+        return $this->requestOptions;
     }
 
     /**
