@@ -18,7 +18,7 @@ final class ResponseTest extends TestCase
     public function testDefaultConstructor(): void
     {
         $clientMock = $this->getMockBuilder(GuzzleClient::class)
-            ->setMethods(['request'])
+            ->onlyMethods(['request'])
             ->getMock();
         $clientMock->method('request')->willReturn(new GuzzleResponse());
         $response = new Response($clientMock, 'GET', '');
@@ -42,7 +42,7 @@ final class ResponseTest extends TestCase
     public function testHeaders(): void
     {
         $clientMock = $this->getMockBuilder(GuzzleClient::class)
-            ->setMethods(['request'])
+            ->onlyMethods(['request'])
             ->getMock();
         $clientMock->method('request')->willReturn(new GuzzleResponse(200, ['Foo' => 'Bar']));
         $response = new Response($clientMock, 'POST', '/');
