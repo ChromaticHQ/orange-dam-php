@@ -2,6 +2,8 @@
 
 namespace Chromatic\OrangeDam\Http;
 
+use Chromatic\OrangeDam\Endpoints\Search;
+use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\MessageInterface;
@@ -15,7 +17,11 @@ final class ResponseTest extends TestCase
      */
     public function testDefaultConstructor(): void
     {
-        $response = new Response(new GuzzleResponse());
+        $clientMock = $this->getMockBuilder(GuzzleClient::class)
+            ->onlyMethods(['request'])
+            ->getMock();
+        $clientMock->method('request')->willReturn(new GuzzleResponse());
+        $response = new Response($clientMock, 'GET', '');
         $this->assertNull($response->getData());
         $this->assertNull($response->toArray());
         $this->assertInstanceOf(StreamInterface::class, $response->getBody());
@@ -35,7 +41,11 @@ final class ResponseTest extends TestCase
      */
     public function testHeaders(): void
     {
-        $response = new Response(new GuzzleResponse(200, ['Foo' => 'Bar']));
+        $clientMock = $this->getMockBuilder(GuzzleClient::class)
+            ->onlyMethods(['request'])
+            ->getMock();
+        $clientMock->method('request')->willReturn(new GuzzleResponse(200, ['Foo' => 'Bar']));
+        $response = new Response($clientMock, 'POST', '/');
         $headers = $response->getHeaders();
         $this->assertTrue($response->hasHeader('Foo'));
         $this->assertSame('Bar', $response->getHeaderLine('Foo'));

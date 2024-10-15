@@ -41,11 +41,9 @@ class Client
     public $oauth2;
 
     /**
-     * Client instance.
-     *
-     * @var \GuzzleHttp\Client
+     * The http request client.
      */
-    public $client;
+    public GuzzleClient $httpClient;
 
     /**
      * Guzzle allows options into its request method. Prepare for some defaults.
@@ -59,14 +57,14 @@ class Client
      *
      * @var string
      */
-    protected $user_agent = 'Chromatic_OrangeDam_PHP/1.0.0 (https://github.com/ChromaticHQ/orange-dam-php)';
+    protected $user_agent = 'Chromatic_OrangeDam_PHP (https://github.com/ChromaticHQ/orange-dam-php)';
 
     /**
      * Constructor.
      *
      * @throws \Chromatic\OrangeDam\Exceptions\OrangeDamException
      */
-    public function __construct(array $config = [], GuzzleClient $client = null, array $clientOptions = [])
+    public function __construct(array $config = [], GuzzleClient $httpClient = null, array $clientOptions = [])
     {
         // Set default property values.
         $this->token = null;
@@ -80,14 +78,14 @@ class Client
         }
 
         // Creates a new instance
-        if (is_null($client)) {
-            $client = new GuzzleClient([
+        if (is_null($httpClient)) {
+            $httpClient = new GuzzleClient([
                 'cookies' => true,
                 'timeout' => self::REQUEST_TIMEOUT,
                 'base_uri' => $config['base_path'],
             ]);
         }
-        $this->client = $client;
+        $this->httpClient = $httpClient;
     }
 
     /**
@@ -128,7 +126,7 @@ class Client
 
         try {
             // Make a request with given parameters.
-            return new Response($this->client->request($method, $url, $options));
+            return new Response($this->httpClient, $method, $url, $options);
         } catch (ServerException $e) {
             throw OrangeDamException::create($e);
         } catch (ClientException $e) {

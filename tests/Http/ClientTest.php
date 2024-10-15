@@ -17,7 +17,7 @@ final class ClientTest extends TestCase
         $client = new Client([
             'base_path' => 'https://test.com',
         ]);
-        $this->assertInstanceOf(GuzzleClient::class, $client->client);
+        $this->assertInstanceOf(GuzzleClient::class, $client->httpClient);
     }
 
     /**

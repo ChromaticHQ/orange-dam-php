@@ -15,6 +15,10 @@ class Response implements ResponseInterface
      */
     public $data;
 
+    protected string $request;
+
+    protected array $requestOptions;
+
     /**
      * Response instance.
      *
@@ -26,9 +30,11 @@ class Response implements ResponseInterface
      * Constructor.
      *
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(\GuzzleHttp\ClientInterface $client, string $method, string $url, array $options = [])
     {
-        $this->response = $response;
+        $this->response = $client->request($method, $url, $options);
+        $this->request = sprintf('%s %s', $method, $url);
+        $this->requestOptions = $options;
     }
 
     /**
@@ -97,6 +103,22 @@ class Response implements ResponseInterface
     public function isEmpty(): bool
     {
         return is_null($this->response->getBody()->getSize());
+    }
+
+    /**
+     * Returns the request string that created this response.
+     */
+    public function getRequest(): string
+    {
+        return $this->request;
+    }
+
+    /**
+     * Returns the request options array that created this response.
+     */
+    public function getRequestOptions(): array
+    {
+        return $this->requestOptions;
     }
 
     /**
