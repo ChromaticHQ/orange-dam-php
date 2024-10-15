@@ -15,7 +15,7 @@ class Response implements ResponseInterface
      */
     public $data;
 
-    protected string $request;
+    protected string $requestPath;
 
     protected array $requestOptions;
 
@@ -33,7 +33,7 @@ class Response implements ResponseInterface
     public function __construct(\GuzzleHttp\ClientInterface $client, string $method, string $url, array $options = [])
     {
         $this->response = $client->request($method, $url, $options);
-        $this->request = sprintf('%s %s', $method, $url);
+        $this->requestPath = sprintf('%s %s', $method, $url);
         $this->requestOptions = $options;
     }
 
@@ -106,15 +106,15 @@ class Response implements ResponseInterface
     }
 
     /**
-     * Returns the request string that created this response.
+     * Returns the request path that was queried for this response.
      */
-    public function getRequest(): string
+    public function getRequestPath(): string
     {
-        return $this->request;
+        return $this->requestPath;
     }
 
     /**
-     * Returns the request options array that created this response.
+     * Returns the request options that were submitted for this response.
      */
     public function getRequestOptions(): array
     {
