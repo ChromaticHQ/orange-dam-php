@@ -64,7 +64,7 @@ class Client
      *
      * @throws \Chromatic\OrangeDam\Exceptions\OrangeDamException
      */
-    public function __construct(array $config = [], ?GuzzleClient $httpClient, array $clientOptions = [])
+    public function __construct(array $config = [], ?GuzzleClient $httpClient = NULL, array $clientOptions = [])
     {
         // Set default property values.
         $this->token = null;
