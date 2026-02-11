@@ -37,7 +37,7 @@ class Factory
      *
      * @throws OrangeDamException
      */
-    public function __construct(array $config = [], Client $client = null, array $clientOptions = [])
+    public function __construct(array $config = [], ?Client $client = null, array $clientOptions = [])
     {
         if (is_null($client)) {
             $client = new Client($config, null, $clientOptions);
