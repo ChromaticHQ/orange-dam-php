@@ -113,7 +113,7 @@ class Client
         if (!empty($query_string)) {
             $full_query_string = !empty($full_query_string) ? $full_query_string . '&' . $query_string : $query_string;
         }
-        $url = $endpoint . '?' . $full_query_string;
+        $url = !empty($full_query_string) ? $endpoint . '?' . $full_query_string : $endpoint;
 
         // Wraps to passed client options.
         $options = [...$this->clientOptions, ...$options];
