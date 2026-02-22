@@ -17,4 +17,9 @@ final class FactoryTest extends TestCase
         ]);
         $this->assertInstanceOf(Factory::class, $factory);
     }
+
+    public function testProjectUrlIsValid(): void
+    {
+        $this->assertStringStartsWith('https://github.com/', Factory::PROJECT_URL);
+    }
 }
