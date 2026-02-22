@@ -51,4 +51,42 @@ final class ResponseTest extends TestCase
         $this->assertSame('Bar', $response->getHeaderLine('Foo'));
         $this->assertSame([0 => 'Bar'], $response->getHeader('Foo'));
     }
+
+    public function testIsEmptyReturnsTrueForEmptyBody(): void
+    {
+        $clientMock = $this->getMockBuilder(GuzzleClient::class)
+            ->onlyMethods(['request'])
+            ->getMock();
+        $clientMock->method('request')->willReturn(new GuzzleResponse());
+        $response = new Response($clientMock, 'GET', '/');
+        $this->assertTrue($response->isEmpty());
+    }
+
+    public function testIsEmptyReturnsTrueForUnknownSize(): void
+    {
+        $streamMock = $this->createMock(StreamInterface::class);
+        $streamMock->method('getSize')->willReturn(null);
+
+        $guzzleResponseMock = $this->createMock(ResponseInterface::class);
+        $guzzleResponseMock->method('getBody')->willReturn($streamMock);
+
+        $clientMock = $this->getMockBuilder(GuzzleClient::class)
+            ->onlyMethods(['request'])
+            ->getMock();
+        $clientMock->method('request')->willReturn($guzzleResponseMock);
+
+        $response = new Response($clientMock, 'GET', '/');
+        $this->assertTrue($response->isEmpty());
+    }
+
+    public function testIsEmptyReturnsFalseForNonEmptyBody(): void
+    {
+        $clientMock = $this->getMockBuilder(GuzzleClient::class)
+            ->onlyMethods(['request'])
+            ->getMock();
+        $clientMock->method('request')
+            ->willReturn(new GuzzleResponse(200, [], '{"data":1}'));
+        $response = new Response($clientMock, 'GET', '/');
+        $this->assertFalse($response->isEmpty());
+    }
 }

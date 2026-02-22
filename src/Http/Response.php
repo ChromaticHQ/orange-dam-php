@@ -98,11 +98,12 @@ class Response implements ResponseInterface
     }
 
     /**
-     * If there is no stream, consider it an empty response.
+     * If the body size is 0 or unknown (null), consider it an empty response.
      */
     public function isEmpty(): bool
     {
-        return is_null($this->response->getBody()->getSize());
+        $size = $this->response->getBody()->getSize();
+        return $size === 0 || $size === null;
     }
 
     /**
