@@ -23,7 +23,7 @@ class Factory
     /**
      * Project URL.
      */
-    final public const PROJECT_URL = 'https://https://github.com/ChromaticHQ/orange-dam-php';
+    final public const PROJECT_URL = 'https://github.com/ChromaticHQ/orange-dam-php';
 
     /**
      * Client instance.
