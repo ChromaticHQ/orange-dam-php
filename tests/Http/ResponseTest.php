@@ -79,4 +79,14 @@ final class ResponseTest extends TestCase
         $response = new Response($clientStub, 'GET', '/');
         $this->assertFalse($response->isEmpty());
     }
+
+    public function testToArrayReturnsDataWithoutCallingGetDataFirst(): void
+    {
+        $clientStub = $this->createStub(GuzzleClient::class);
+        $clientStub->method('request')
+            ->willReturn(new GuzzleResponse(200, [], '{"foo":"bar"}'));
+        $response = new Response($clientStub, 'GET', '/');
+        // Do NOT call getData() first — that's the point of this test
+        $this->assertSame(['foo' => 'bar'], $response->toArray());
+    }
 }
