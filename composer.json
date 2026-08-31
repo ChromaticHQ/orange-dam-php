@@ -18,6 +18,11 @@
             "name": "Adam Zimmermann",
             "email": "adam@chromatichq.com",
             "homepage": "https://www.drupal.org/u/adamzimmermann"
+        },
+        {
+            "name": "Kristofer Widholm",
+            "email": "kristofer@chromatichq.com",
+            "homepage": "https://www.drupal.org/u/apotek"
         }
     ],
     "require": {
