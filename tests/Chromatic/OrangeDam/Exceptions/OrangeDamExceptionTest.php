@@ -27,8 +27,7 @@ final class OrangeDamExceptionTest extends TestCase
         // Handle Guzzle RequestException constructor change in version 8.
         if (defined('ClientInterface::MAJOR_VERSION') && ClientInterface::MAJOR_VERSION > 7) {
             $response = 200;
-        }
-        else {
+        } else {
             $response = new Response(200);
         }
         $e = new RequestException(
@@ -48,8 +47,7 @@ final class OrangeDamExceptionTest extends TestCase
         // Handle Guzzle RequestException constructor change in version 8.
         if (defined('ClientInterface::MAJOR_VERSION') && ClientInterface::MAJOR_VERSION > 7) {
             $response = 200;
-        }
-        else {
+        } else {
             $response = new Response(200);
         }
         $e = new RequestException(
