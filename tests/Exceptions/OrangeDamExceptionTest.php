@@ -2,6 +2,7 @@
 
 namespace Chromatic\OrangeDam\Exceptions;
 
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
@@ -23,10 +24,17 @@ final class OrangeDamExceptionTest extends TestCase
      */
     public function testSanitizeResponse(): void
     {
+        // Handle Guzzle RequestException constructor change in version 8.
+        if (defined('ClientInterface::MAJOR_VERSION') && ClientInterface::MAJOR_VERSION > 7) {
+            $response = 200;
+        }
+        else {
+            $response = new Response(200);
+        }
         $e = new RequestException(
             'token=12345 Test response message.',
             new Request('GET', '/'),
-            new Response(200)
+            $response,
         );
         $orangeException = OrangeDamException::create($e);
         $this->assertSame($orangeException->getMessage(), 'token=*** Test response message.');
@@ -37,10 +45,17 @@ final class OrangeDamExceptionTest extends TestCase
      */
     public function testGetResponse(): void
     {
+        // Handle Guzzle RequestException constructor change in version 8.
+        if (defined('ClientInterface::MAJOR_VERSION') && ClientInterface::MAJOR_VERSION > 7) {
+            $response = 200;
+        }
+        else {
+            $response = new Response(200);
+        }
         $e = new RequestException(
             '',
             new Request('GET', '/'),
-            new Response(200)
+            $response,
         );
         $orangeException = OrangeDamException::create($e);
         $this->assertInstanceOf(Response::class, $orangeException->getResponse());
