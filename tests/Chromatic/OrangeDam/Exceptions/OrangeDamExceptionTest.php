@@ -51,7 +51,7 @@ final class OrangeDamExceptionTest extends TestCase
         // Handle Guzzle RequestException constructor change in version 8.
         $client_class = ClientInterface::class;
         if (defined("$client_class::MAJOR_VERSION") && ClientInterface::MAJOR_VERSION > 7) {
-            $e = new ResponseException(
+            $e = new \GuzzleHttp\Exception\ResponseException(
                 '',
                 new Request('GET', '/'),
                 new Response(200),
