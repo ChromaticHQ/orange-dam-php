@@ -27,15 +27,18 @@ final class OrangeDamExceptionTest extends TestCase
         // Handle Guzzle RequestException constructor change in version 8.
         $client_class = ClientInterface::class;
         if (defined("$client_class::MAJOR_VERSION") && ClientInterface::MAJOR_VERSION > 7) {
-            $response = 200;
+            $e = new \GuzzleHttp\Exception\ResponseException(
+                'token=12345 Test response message.',
+                new Request('GET', '/'),
+                new Response(200),
+            );
         } else {
-            $response = new Response(200);
+            $e = new RequestException(
+                'token=12345 Test response message.',
+                new Request('GET', '/'),
+                new Response(200),
+            );
         }
-        $e = new RequestException(
-            'token=12345 Test response message.',
-            new Request('GET', '/'),
-            $response,
-        );
         $orangeException = OrangeDamException::create($e);
         $this->assertSame($orangeException->getMessage(), 'token=*** Test response message.');
     }
@@ -46,16 +49,20 @@ final class OrangeDamExceptionTest extends TestCase
     public function testGetResponse(): void
     {
         // Handle Guzzle RequestException constructor change in version 8.
-        if (ClientInterface::MAJOR_VERSION > 7) {
-            $response = 200;
+        $client_class = ClientInterface::class;
+        if (defined("$client_class::MAJOR_VERSION") && ClientInterface::MAJOR_VERSION > 7) {
+            $e = new ResponseException(
+                '',
+                new Request('GET', '/'),
+                new Response(200),
+            );
         } else {
-            $response = new Response(200);
+            $e = new RequestException(
+                '',
+                new Request('GET', '/'),
+                new Response(200),
+            );
         }
-        $e = new RequestException(
-            '',
-            new Request('GET', '/'),
-            $response,
-        );
         $orangeException = OrangeDamException::create($e);
         $this->assertInstanceOf(Response::class, $orangeException->getResponse());
     }
