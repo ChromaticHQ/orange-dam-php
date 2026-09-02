@@ -39,9 +39,8 @@ class Factory
      */
     public function __construct(array $config = [], ?Client $client = null, array $clientOptions = [])
     {
-        if (is_null($client)) {
-            $client = new Client($config, null, $clientOptions);
-        }
+        // Null coalesce assignment of new instance if necessary.
+        $client ??= new Client($config, null, $clientOptions);
         $this->client = $client;
     }
 

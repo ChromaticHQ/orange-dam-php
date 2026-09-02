@@ -59,9 +59,8 @@ class Response implements ResponseInterface
      */
     public function getData()
     {
-        if (is_null($this->data)) {
-            $this->data = $this->getDataFromResponse($this->response);
-        }
+        // Null coalesce assignment of new data if data is null.
+        $this->data ??= $this->getDataFromResponse($this->response);
         return $this->data;
     }
 
