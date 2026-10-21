@@ -44,7 +44,6 @@ class OrangeDamException extends Exception
             $guzzleException->getCode(),
             $guzzleException
         );
-
         $e->response = $guzzleException->getResponse();
 
         return $e;

@@ -69,7 +69,7 @@ final class ClientTest extends TestCase
         $guzzle = new GuzzleClient(['handler' => $handlerStack, 'base_uri' => 'https://test.com']);
         $client = new Client(['base_path' => 'https://test.com'], $guzzle);
         $client->token = 'test-token';
-        $client->request('get', '/some/endpoint');
+        $client->request('GET', '/some/endpoint');
 
         $uri = (string) $container[0]['request']->getUri();
         $this->assertStringNotContainsString('?', $uri);

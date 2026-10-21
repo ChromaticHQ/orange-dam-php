@@ -77,14 +77,13 @@ class Client
             throw new OrangeDamException('You must provide Orange DAM API Base path.');
         }
 
-        // Creates a new instance
-        if (is_null($httpClient)) {
-            $httpClient = new GuzzleClient([
-                'cookies' => true,
-                'timeout' => self::REQUEST_TIMEOUT,
-                'base_uri' => $config['base_path'],
-            ]);
-        }
+        // Null coalesce assignment of new instance.
+        $httpClient ??= new GuzzleClient([
+            'cookies' => true,
+            'timeout' => self::REQUEST_TIMEOUT,
+            'base_uri' => $config['base_path'],
+        ]);
+
         $this->httpClient = $httpClient;
     }
 
